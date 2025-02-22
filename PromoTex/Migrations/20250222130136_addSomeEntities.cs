@@ -64,10 +64,30 @@ namespace PromoTex.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.InsertData(
+              table: "Categories",
+              columns: new[] { "Id", "Name" },
+              values: new object[,]
+              {
+                    { 1, "Men" },
+                    { 2, "Women" }
+              });
+
+            migrationBuilder.InsertData(
+                table: "Products",
+                columns: new[] { "Id", "CategoryId", "Description", "ImageUrl", "Name", "Price" },
+                values: new object[,]
+                {
+                    { 1, 1, "Cotton T-shirt", null, "T-Shirt", 150m },
+                    { 2, 1, "Blue jeans", null, "Jeans", 300m },
+                    { 3, 2, "Elegant dress", null, "Dress", 500m }
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Products_CategoryId",
                 table: "Products",
                 column: "CategoryId");
+
         }
 
         /// <inheritdoc />
